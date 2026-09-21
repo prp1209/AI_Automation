@@ -1,0 +1,157 @@
+{
+  "pages": {
+    "home": {
+      "logo": [
+        { "type": "CSS", "value": "img[alt='Website for automation practice']" },
+        { "type": "XPATH", "value": "//img[contains(@alt, 'Website for automation practice')]" }
+      ],
+      "loginLink": [
+        { "type": "CSS", "value": "a[href='/login']" },
+        { "type": "XPATH", "value": "//a[contains(@href, '/login')]" }
+      ],
+      "productsLink": [
+        { "type": "CSS", "value": "a[href='/products']" },
+        { "type": "XPATH", "value": "//a[contains(@href, '/products')]" }
+      ],
+      "optionalPopupClose": [
+        { "type": "CSS", "value": "#popup .close" },
+        { "type": "CSS", "value": ".modal .close" },
+        { "type": "XPATH", "value": "//button[contains(@class,'close')]" }
+      ]
+    },
+    "login": {
+      "loginFormTitle": [
+        { "type": "XPATH", "value": "//h2[normalize-space()='Login to your account']" },
+        { "type": "XPATH", "value": "//h2[contains(text(),'Login to your account')]" }
+      ],
+      "signupFormTitle": [
+        { "type": "XPATH", "value": "//h2[normalize-space()='New User Signup!']" },
+        { "type": "XPATH", "value": "//h2[contains(text(),'New User Signup!')]" }
+      ],
+      "loginEmail": [
+        { "type": "CSS", "value": "input[data-qa='login-email']" },
+        { "type": "XPATH", "value": "//input[@name='email' and @placeholder='Email Address']" }
+      ],
+      "loginPassword": [
+        { "type": "CSS", "value": "input[data-qa='login-password']" },
+        { "type": "XPATH", "value": "//input[@name='password' and @placeholder='Password']" }
+      ],
+      "loginButton": [
+        { "type": "CSS", "value": "button[data-qa='login-button']" },
+        { "type": "XPATH", "value": "//button[normalize-space()='Login']" }
+      ],
+      "signupName": [
+        { "type": "CSS", "value": "input[data-qa='signup-name']" },
+        { "type": "XPATH", "value": "//input[@name='name' and @placeholder='Name']" }
+      ],
+      "signupEmail": [
+        { "type": "CSS", "value": "input[data-qa='signup-email']" },
+        { "type": "XPATH", "value": "//input[@type='email' and @placeholder='Email Address']" }
+      ],
+      "signupButton": [
+        { "type": "CSS", "value": "button[data-qa='signup-button']" },
+        { "type": "XPATH", "value": "//button[normalize-space()='Signup']" }
+      ],
+      "loggedInUser": [
+        { "type": "CSS", "value": "a[href='/account']" },
+        { "type": "XPATH", "value": "//a[contains(normalize-space(.), 'Logged in as')]" }
+      ],
+      "logoutLink": [
+        { "type": "CSS", "value": "a[href='/logout']" },
+        { "type": "XPATH", "value": "//a[normalize-space()='Logout']" },
+        { "type": "XPATH", "value": "//a[contains(normalize-space(.), 'Logout')]" }
+      ]
+    },
+    "products": {
+      "searchInput": [
+        { "type": "CSS", "value": "#search_product" },
+        { "type": "XPATH", "value": "//input[@id='search_product' or @name='search']" }
+      ],
+      "searchButton": [
+        { "type": "CSS", "value": "#submit_search" },
+        { "type": "XPATH", "value": "//button[@id='submit_search']" }
+      ],
+      "pageTitle": [
+        { "type": "CSS", "value": "h2.title.text-center" },
+        { "type": "XPATH", "value": "//h2[contains(normalize-space(.), 'All Products')]" }
+      ]
+    },
+    "accountInformation": {
+      "firstName": [
+        { "type": "CSS", "value": "input[data-qa='first_name']" },
+        { "type": "CSS", "value": "#first_name" },
+        { "type": "XPATH", "value": "//input[@name='first_name']" }
+      ],
+      "lastName": [
+        { "type": "CSS", "value": "input[data-qa='last_name']" },
+        { "type": "CSS", "value": "#last_name" },
+        { "type": "XPATH", "value": "//input[@name='last_name']" }
+      ],
+      "password": [
+        { "type": "CSS", "value": "input[data-qa='password']" },
+        { "type": "CSS", "value": "#password" },
+        { "type": "XPATH", "value": "//input[@name='password' and @type='password']" }
+      ],
+      "genderMr": [
+        { "type": "CSS", "value": "#id_gender1" },
+        { "type": "XPATH", "value": "//input[@type='radio' and @value='Mr']" }
+      ],
+      "day": [
+        { "type": "CSS", "value": "#days" },
+        { "type": "CSS", "value": "select[name='days']" }
+      ],
+      "month": [
+        { "type": "CSS", "value": "#months" },
+        { "type": "CSS", "value": "select[name='months']" }
+      ],
+      "year": [
+        { "type": "CSS", "value": "#years" },
+        { "type": "CSS", "value": "select[name='years']" }
+      ],
+      "newsletter": [
+        { "type": "CSS", "value": "#newsletter" },
+        { "type": "XPATH", "value": "//input[@name='newsletter']" }
+      ],
+      "offers": [
+        { "type": "CSS", "value": "#optin" },
+        { "type": "XPATH", "value": "//input[@name='optin']" }
+      ],
+      "company": [
+        { "type": "CSS", "value": "input[data-qa='company']" },
+        { "type": "CSS", "value": "#company" }
+      ],
+      "address1": [
+        { "type": "CSS", "value": "input[data-qa='address']" },
+        { "type": "CSS", "value": "#address1" }
+      ],
+      "address2": [
+        { "type": "CSS", "value": "input[data-qa='address2']" },
+        { "type": "CSS", "value": "#address2" }
+      ],
+      "country": [
+        { "type": "CSS", "value": "select[data-qa='country']" },
+        { "type": "CSS", "value": "#country" }
+      ],
+      "state": [
+        { "type": "CSS", "value": "input[data-qa='state']" },
+        { "type": "CSS", "value": "#state" }
+      ],
+      "city": [
+        { "type": "CSS", "value": "input[data-qa='city']" },
+        { "type": "CSS", "value": "#city" }
+      ],
+      "zipCode": [
+        { "type": "CSS", "value": "input[data-qa='zipcode']" },
+        { "type": "CSS", "value": "#zipcode" }
+      ],
+      "phone": [
+        { "type": "CSS", "value": "input[data-qa='mobile_number']" },
+        { "type": "CSS", "value": "#mobile_number" }
+      ],
+      "createAccount": [
+        { "type": "CSS", "value": "button[data-qa='create-account']" },
+        { "type": "XPATH", "value": "//button[contains(normalize-space(.), 'Create Account')]" }
+      ]
+    }
+  }
+}

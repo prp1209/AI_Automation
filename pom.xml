@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>AI_Automation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <playwright.version>1.49.0</playwright.version>
+        <junit.jupiter.version>5.10.2</junit.jupiter.version>
+        <assertj.version>3.26.3</assertj.version>
+        <jackson.version>2.17.2</jackson.version>
+        <allure.version>2.29.0</allure.version>
+        <allure.maven.version>2.15.0</allure.maven.version>
+        <maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.microsoft.playwright</groupId>
+            <artifactId>playwright</artifactId>
+            <version>${playwright.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                        <headless>true</headless>
+                        <signup.name>${env.SIGNUP_NAME}</signup.name>
+                        <signup.email>${env.SIGNUP_EMAIL}</signup.email>
+                        <signup.password>${env.SIGNUP_PASSWORD}</signup.password>
+                        <signup.firstName>${env.SIGNUP_FIRST_NAME}</signup.firstName>
+                        <signup.lastName>${env.SIGNUP_LAST_NAME}</signup.lastName>
+                        <signup.gender>${env.SIGNUP_GENDER}</signup.gender>
+                        <signup.day>${env.SIGNUP_DAY}</signup.day>
+                        <signup.month>${env.SIGNUP_MONTH}</signup.month>
+                        <signup.year>${env.SIGNUP_YEAR}</signup.year>
+                        <signup.company>${env.SIGNUP_COMPANY}</signup.company>
+                        <signup.address1>${env.SIGNUP_ADDRESS1}</signup.address1>
+                        <signup.address2>${env.SIGNUP_ADDRESS2}</signup.address2>
+                        <signup.country>${env.SIGNUP_COUNTRY}</signup.country>
+                        <signup.state>${env.SIGNUP_STATE}</signup.state>
+                        <signup.city>${env.SIGNUP_CITY}</signup.city>
+                        <signup.zipCode>${env.SIGNUP_ZIP_CODE}</signup.zipCode>
+                        <signup.phone>${env.SIGNUP_PHONE}</signup.phone>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure.maven.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
