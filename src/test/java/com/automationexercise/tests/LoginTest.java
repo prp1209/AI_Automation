@@ -41,4 +41,5 @@ class LoginTest extends BaseTest {
         assertThat(loginPage.isLoggedIn()).isTrue();
         loginPage.logout();
     }
+
 }

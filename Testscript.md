@@ -176,7 +176,30 @@ If any step fails:
 ## 9. Test Summary
 This project currently contains a simple Java application. The smoke test focuses on verifying that the project can compile, run, and print the expected welcome message and loop values.
 
-## 10. Jira Ticket Rules
+## 10. Test Script Placement Rule
+
+Whenever a new test script is created, it must be added inside the class block and placed immediately after the existing method block, before the closing `}` of the class.
+
+Example:
+
+```java
+class SignupTest extends BaseTest {
+
+    @Test
+    void signupWithNewUserDetails() {
+        // existing test method body
+    }
+
+    @Test
+    void newTestScript() {
+        // new script goes here, after the method block inside the class
+    }
+}
+```
+
+This keeps every new script inside the class body and maintains a consistent method ordering.
+
+## 11. Jira Ticket Rules
 
 ### New test scripts
 
@@ -204,7 +227,7 @@ mvn test -Dtest=HomePageTest#homePageLoadsAndLoginFormIsAccessible -Djira.issueK
 
 The supplied issue is updated only when Jira reporting is configured. This allows an existing test script to update its existing Jira Task without creating a duplicate.
 
-## 11. Screenshot Rule
+## 12. Screenshot Rule
 
 After every executed UI action or page-navigation step, the framework captures a screenshot for reference. Screenshots are saved automatically under:
 
@@ -249,7 +272,7 @@ Every other test script writes new files to:
 target/screenshots/SIGNUPTEST_SignupwithSIgnupCredentials/
 ```
 
-## 12. Build the Solution
+## 13. Build the Solution
 
 After generating or modifying test scripts, build the complete solution from the project root:
 
@@ -264,7 +287,7 @@ Expected result:
 - Screenshots are available under `target/screenshots/`.
 - If Jira is configured, the new test creates a Task and returns its Jira ID.
 
-## 13. Allure Report
+## 14. Allure Report
 
 Run a test to create Allure results and generate the HTML report:
 
