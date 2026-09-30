@@ -14,10 +14,6 @@ public class JiraExecutionExtension implements AfterTestExecutionCallback {
             return;
         }
 
-        if (!metadata.newTestScript() && ConfigManager.JIRA_ISSUE_KEY.isBlank()) {
-            return;
-        }
-
         if (!reporter.isConfigured()) {
             return;
         }
@@ -28,6 +24,7 @@ public class JiraExecutionExtension implements AfterTestExecutionCallback {
                 + ". Browser: " + System.getProperty("browser", "chrome")
                 + ". Base URL: " + ConfigManager.BASE_URL;
 
-        reporter.createOrUpdate(metadata, actualResult);
+        String issueKey = reporter.createOrUpdate(metadata, actualResult);
+        TestScriptIdWriter.write(issueKey);
     }
 }

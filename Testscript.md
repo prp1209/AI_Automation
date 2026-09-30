@@ -1,10 +1,10 @@
 # Test Script for AI_Automation
 
-## Jira ID
+## HIRA ID
 
 `ABC-XXXX`
 
-> Replace `ABC-XXXX` with the Jira issue key returned after the successful test execution creates the Task.
+> This field is updated automatically with the generated Jira issue key after a test script passes and Jira reporting completes successfully.
 
 ## 1. Purpose
 This script validates that the Java project builds successfully and runs without errors. It is intended for manual verification of the current Maven-based project configuration.
@@ -201,6 +201,10 @@ This keeps every new script inside the class body and maintains a consistent met
 
 ## 11. Jira Ticket Rules
 
+### HIRA ID update rule
+
+After a test annotated with `@JiraTestCase` passes and Jira creates or updates the corresponding Task, the generated Jira issue key must be written to the `HIRA ID` field near the top of this file. Failed tests and runs without Jira configuration must not update the field. The Markdown path can be overridden with `-Djira.testScriptFile=<path>`.
+
 ### New test scripts
 
 When a newly created test script completes successfully, it must create a Jira Task under Epic `ABC-1`. The test must be explicitly marked as a new script:
@@ -219,13 +223,13 @@ The generated Jira Task contains the Acceptance Criteria, Steps to Reproduce, Ex
 
 ### Existing test scripts
 
-Existing test scripts must use `newTestScript = false` (the default). A successful run of an existing script must not create a new Jira ticket. If the user wants to rerun an existing test against an already-created Jira ticket, the Jira issue key must be supplied:
+Every successful test annotated with `@JiraTestCase` creates a new Jira Task by default. If the user wants to rerun an existing test against an already-created Jira ticket, the Jira issue key must be supplied:
 
 ```powershell
 mvn test -Dtest=HomePageTest#homePageLoadsAndLoginFormIsAccessible -Djira.issueKey=ABC-123
 ```
 
-The supplied issue is updated only when Jira reporting is configured. This allows an existing test script to update its existing Jira Task without creating a duplicate.
+The supplied issue is updated only when Jira reporting is configured. This prevents an existing Jira Task from being duplicated.
 
 ## 12. Screenshot Rule
 

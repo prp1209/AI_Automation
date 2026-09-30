@@ -64,6 +64,7 @@ public class UiElement {
     }
 
     public String getText() {
+
         return get().innerText();
     }
 

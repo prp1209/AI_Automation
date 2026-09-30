@@ -31,7 +31,8 @@ class LoginTest extends BaseTest {
             },
             expectedResult = "The user logs in successfully and can sign out using the configured signup email and password."
     )
-    void loginWithSignupCredentials() {
+    void loginWithSignupCredentials()
+    {
         HomePage homePage = new HomePage(page).open();
         LoginPage loginPage = homePage.openLoginPage();
 

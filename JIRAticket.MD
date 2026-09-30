@@ -98,29 +98,29 @@ mvn test -DbaseUrl=https://www.automationexercise.com
 
 ### Successful test execution
 
-When a new test annotated with `@JiraTestCase(newTestScript = true)` completes successfully:
+When any test annotated with `@JiraTestCase` completes successfully:
 
 - If no Jira issue key is supplied, create a Jira `Task`.
-- Create the Task in Jira project `ABC`.
-- Create the Task under Epic `ABC-1` by default.
+- Create the Task in the configured Jira project.
+- Link the Task to the configured Epic when the Jira instance supports the configured Epic Link field.
 - Generate and include detailed:
   - Acceptance Criteria
   - Steps to Reproduce
   - Expected Result
   - Actual Result
   - Execution details
+- Write the generated Jira issue key to the `HIRA ID` field in `Testscript.md`.
+- Do not update the `HIRA ID` field when the test fails or Jira reporting is not configured.
 
 ### Re-running an existing test case
 
-Existing tests use `newTestScript = false` by default and do not create new Jira tickets.
-
-The user must provide the existing Jira issue key when rerunning a test case. The reporter updates that Jira Task instead of creating a new one:
+To update an existing Jira Task instead of creating a new one, provide its issue key when running the test:
 
 ```bash
 mvn test -Dtest=HomePageTest#homePageLoadsAndLoginFormIsAccessible -Djira.issueKey=ABC-123
 ```
 
-Without `-Djira.issueKey`, a successful execution of an existing test does not create a Jira ticket.
+Without `-Djira.issueKey`, every successful execution creates a new Jira Task.
 
 ### Jira configuration
 

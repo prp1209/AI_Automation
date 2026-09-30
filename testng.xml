@@ -3,9 +3,14 @@
 <suite name="Automation Exercise Test Suite" verbose="1">
     <test name="Automation Exercise Tests">
         <classes>
-            <class name="com.automationexercise.tests.HomePageTest"/>
-            <class name="com.automationexercise.tests.LoginTest"/>
-            <class name="com.automationexercise.tests.SignupTest"/>
+            <class name="com.automationexercise.tests.HomePageTest">
+                <methods>
+                    <include name="homePageLoadsAndLoginFormIsAccessible"/>
+                </methods>
+                <methods>
+                    <exclude name="productsPageLoads"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

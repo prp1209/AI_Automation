@@ -26,12 +26,13 @@ public class JiraReporter {
                 && !ConfigManager.JIRA_API_TOKEN.isBlank();
     }
 
-    public void createOrUpdate(JiraTestCase metadata, String actualResult) {
+    public String createOrUpdate(JiraTestCase metadata, String actualResult) {
         try {
             if (ConfigManager.JIRA_ISSUE_KEY.isBlank()) {
-                createIssue(metadata, actualResult);
+                return createIssue(metadata, actualResult);
             } else {
                 updateIssue(ConfigManager.JIRA_ISSUE_KEY, metadata, actualResult);
+                return ConfigManager.JIRA_ISSUE_KEY;
             }
         } catch (IOException e) {
             throw new IllegalStateException("Jira reporting failed", e);
@@ -41,7 +42,7 @@ public class JiraReporter {
         }
     }
 
-    private void createIssue(JiraTestCase metadata, String actualResult)
+    private String createIssue(JiraTestCase metadata, String actualResult)
             throws IOException, InterruptedException {
         ObjectNode fields = mapper.createObjectNode();
         fields.putObject("project").put("key", ConfigManager.JIRA_PROJECT_KEY);
@@ -51,7 +52,12 @@ public class JiraReporter {
         fields.put(ConfigManager.JIRA_EPIC_LINK_FIELD, ConfigManager.JIRA_EPIC_KEY);
 
         JsonNode response = send("POST", "/rest/api/3/issue", fields);
-        System.out.println("Created Jira Task: " + response.path("key").asText());
+        String issueKey = response.path("key").asText();
+        if (issueKey.isBlank()) {
+            throw new IllegalStateException("Jira create response did not contain an issue key");
+        }
+        System.out.println("Created Jira Task: " + issueKey);
+        return issueKey;
     }
 
     private void updateIssue(String issueKey, JiraTestCase metadata, String actualResult)
